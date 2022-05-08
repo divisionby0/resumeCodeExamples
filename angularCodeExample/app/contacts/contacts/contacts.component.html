@@ -1,0 +1,14 @@
+<div [ngClass]="cssClasses">
+    <app-contacts-header #header [eventReceiver]="headerEventReceiver"></app-contacts-header>
+
+    <div class="main-list__tabs">
+        <div #contactList *ngIf="contactsVisible" class="main-list__tab main-list__tab-active">
+            <app-contact-list-renderer *ngFor="let contact of contacts" [contact]="contact" [parentComponent]="selfComponent"></app-contact-list-renderer>
+        </div>
+
+        <div *ngIf="invitationsVisible" class="main-list__tab main-list__tab-active">
+            <app-all-invitations></app-all-invitations>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="legend">Latest<br/>lady videos<br/>to buy</div>
+
+
+    <virtual-scroller #horizontalScroll
+                      [horizontal]="true"
+                      [items]="items"
+                      [enableUnequalChildrenSizes]="false"
+                      class="mediaLibraryList">
+        <media-library-list-renderer *ngFor="let item of horizontalScroll.viewPortItems" [data]="item" (buyMedia)="onBuyMedia($event)"></media-library-list-renderer>
+    </virtual-scroller>
+</div>
+

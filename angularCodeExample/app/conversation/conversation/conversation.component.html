@@ -1,0 +1,61 @@
+<div class="conversation"
+     [ngClass]="cssClasses"
+     [attr.remoteVideoFullscreen]="remoteVideoFullscreen"
+     [attr.activeTextAndAudio]="hasActiveTextAndAudioChat"
+     [attr.activeTextOnly]="hasActiveTextChat"
+     (mouseenter)="onMouseOver()"
+     (mouseleave)="onMouseOut()">
+    
+    <div *ngIf="toggleMobileMenuButtonVisible && !connectionFailedError" class="toggleMobileMenuButton" (click)="onToggleMobileMenuClicked()">
+        <div class="toggleMobileMenuButtonImage"></div>
+        <div *ngIf="invitationsTotalVisible" class="toggleMobileMenuButtonInvitationsTotal">{{totalInvitations}}</div>
+
+        <div class="balanceBadgeInConversation" [attr.parentCollapsed]="collapsedVertically">
+            <app-balance-badge [parentCollapsed]="collapsedVertically"></app-balance-badge>
+        </div>
+    </div>
+
+    <app-self-contact-block #self
+                            *ngIf="selfContact && selfBlockVisible"
+                            [contact]="selfContact"
+                            [remoteFreeMinuteProvider]="remoteContact"
+                            [attr.mobile]="toggleMobileMenuButtonVisible"
+                            [attr.selfVideoEnabled]="selfVideoEnabled"
+                            [attr.remoteVideoFullscreen]="remoteVideoFullscreen"
+                            (selfVideoEnabledStateChanged)="onSelfVideoEnabledStateChanged($event)">
+    </app-self-contact-block>
+
+    <app-no-self-person-block *ngIf="!selfContact && !connectionFailedError"></app-no-self-person-block>
+    <app-connection-failed-block *ngIf="connectionFailedError"></app-connection-failed-block>
+
+    <div *ngIf="!remoteVideoFullscreen && !connectionFailedError"
+         class="conversationCenterBlock"
+         [attr.visible]="bigStopButtonVisible">
+        <app-stop-conversation-button
+                [enabled]="bigStopButtonVisible"
+                [remoteContact]="remoteContact"
+                [selfContact]="selfContact"
+                (stopConversation)="onStopConversation()">
+        </app-stop-conversation-button>
+    </div>
+
+    <app-remote-contact-block #remoteContactBlock
+                              *ngIf="remoteBlockVisible && remoteContact && !connectionFailedError"
+                              (addToFavourites)="onAddToFavourites()"
+                              [contact]="remoteContact"
+                              [collapsed]="collapsedVertically"
+                              [fullscreen]="remoteVideoFullscreen"
+                              [attr.fullscreen]="remoteVideoFullscreen"
+                              [attr.mobile]="toggleMobileMenuButtonVisible"
+                              (subscribeRemoteAudioEvent)="onSubscribeRemoteAudioRequest(remoteContact)"
+                              (unsubscribeRemoteAudioEvent)="onUnsubscribeRemoteAudioRequest()"
+                              (subscribeRemoteVideoEvent)="onSubscribeRemoteVideoRequest(remoteContact)"
+                              (unsubscribeRemoteVideoEvent)="onUnsubscribeRemoteVideoRequest()"
+                              (stopTextChat)="onStopTextChat()"
+                              (ban)="onBanRemoteContact(remoteContact)">
+    </app-remote-contact-block>
+    <app-no-remote-person-block *ngIf="remoteBlockVisible && !remoteContact"></app-no-remote-person-block>
+
+    <div *ngIf="appErrorVisible" class="appErrorBlock" [innerHtml]="appError"></div>
+
+</div>

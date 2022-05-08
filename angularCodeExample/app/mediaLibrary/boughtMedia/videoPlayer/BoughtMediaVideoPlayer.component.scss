@@ -1,0 +1,23 @@
+.container{
+  width: 600px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.player{
+  width: 600px;
+  height: 350px;
+  background-color: #171717;
+}
+
+@media screen and (max-width: 810px) {
+  .container{
+    width: calc(100vw - 71px);
+    height: unset!important;
+  }
+
+  .player{
+    width: 100%;
+  }
+}

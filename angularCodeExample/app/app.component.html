@@ -1,0 +1,42 @@
+<div class="appWrapper">
+  <!--<img class="siteBackgroundImage" src="assets/images/christmas/siteBackgroun.png">-->
+  <app-mobile-menu *ngIf="mobileMenuEnabled"
+                   (ban)="onBanFromMobileMenu()">
+  </app-mobile-menu>
+
+  <div class="contentWrapper" [attr.remoteVideoFullscreen]="remoteVideoFullscreen">
+    <app-header></app-header>
+    <ladies-media-library-list *ngIf="!isMobile"></ladies-media-library-list>
+
+    <div class="appContent" [attr.remoteVideoFullscreen]="remoteVideoFullscreen">
+      <div [ngClass]="leftRowClass">
+        <app-conversation #conversation
+                          (selfVideoEnabledStateChanged)="onSelfVideoEnabledStateChanged($event)">
+        </app-conversation>
+
+        <app-text-chat #textchat
+                       fullscreen="false"
+                       collapsed="false"
+                       mobile="false"
+                       [attr.selfVideoEnabled]="selfVideoEnabled"
+                       [selectedContactAvatar]="currentSelectedContactAvatar">
+        </app-text-chat>
+      </div>
+      <div [ngClass]="rightRowClass">
+        <app-contacts #contacts></app-contacts>
+      </div>
+    </div>
+
+  </div>
+
+
+  <app-mobile-image-viewer></app-mobile-image-viewer>
+  <app-dialog></app-dialog>
+  <smiles-mobile-popup></smiles-mobile-popup>
+  <stickers-mobile-popup></stickers-mobile-popup>
+  <div style="position: absolute; z-index:4; bottom: 0; left: 0; z-index: 103; pointer-events: none; font-size: 0.6em; color: darkgray;">c:{{version}} / s:{{serverVersion}}</div>
+</div>
+
+<ladies-media-library-list-mobile *ngIf="isMobile"></ladies-media-library-list-mobile>
+
+

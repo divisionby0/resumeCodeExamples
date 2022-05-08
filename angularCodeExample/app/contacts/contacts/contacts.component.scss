@@ -1,0 +1,51 @@
+@import "../../common";
+@import "../../avatarElement";
+:host{
+  width: 100%;
+}
+
+.contacts{
+  /*@extend .hasDebugBorder;*/
+  @extend .baseBlock;
+  width: $contactsBlockWidth;
+  height: 100%;
+  background-color: teal;
+  margin: 6px 15px;
+}
+
+.main-list__tabs {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 185px - #{$ladiesMediaLibraryHeight});
+  position: relative;
+}
+.main-list__tab {
+  display: none;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 6px;
+}
+
+.main-list__tab-active {
+  display: block;
+}
+
+@media screen and (max-width: 1380px) {
+  .contacts{
+    margin: 0;
+    width: 100%;
+  }
+
+  .main-list__tabs {
+    max-height: calc(100vh - 110px);
+  }
+  .main-list__tab:before {
+    display: none;
+  }
+  .main-list__tab:after {
+    display: none;
+  }
+}

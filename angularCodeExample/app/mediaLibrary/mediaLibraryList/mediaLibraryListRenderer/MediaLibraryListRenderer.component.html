@@ -1,0 +1,11 @@
+<div class="mediaLibraryListRenderer" (click)="onBuyMedia({media:data, service:this.mediaLibraryService})" (mouseenter)="onMouseOver()" (mouseleave)="onMouseOut()">
+    <div style="width: 100%; height: 100%; display: flex; flex-direction: row; justify-content: center; align-items: center;">
+        <img *ngIf="animatedPreviewVisible" class="preview" [src]="animationUrl">
+        <img *ngIf="stillPreviewVisible" class="preview" [src]="stillImageUrl">
+    </div>
+
+    <div class="contactListRendererAvatarBlockImpl">
+        <img [src]="ownerAvatar" (error)="onImageSourceUndefined($event)" alt="img" class="contactListRendererAvatarImpl">
+    </div>
+    <div class="cost">{{cost}}</div>
+</div>

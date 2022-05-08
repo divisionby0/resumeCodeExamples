@@ -1,0 +1,51 @@
+<div class="conversationPersonBlockContent">
+    <div [ngClass]="cssClass">
+        <div *ngIf="collapsed && !videoEnabled" class="conversationCollapsedVerticallyContent">
+            <div>{{collapsedInfoText}}</div>
+        </div>
+
+        <app-person-avatar #avatar
+                           [hidden]="!avatarVisible"
+                           [contact]="contact">
+        </app-person-avatar>
+
+        <div class="personInfo" *ngIf="!collapsed && controlsVisible">
+            <div style="display: flex; flex-direction: row;">
+                <div *ngIf="contact!=null" class="personName">{{contact.getName()}}</div>
+                <div style="margin-top: -5px; padding-left: 10px;">
+                    <mood-component [contact]="contact"></mood-component>
+                </div>
+            </div>
+            <div class="personId">{{contact.getId()}}</div>
+
+            <app-remote-buttons-block *ngIf="contact"
+                                      #buttonsBlock
+                                      [contact]="contact"
+                                      [eventReceiver]="this"
+                                      (stopTextChat)="onStopTextChat()"
+                                      (startRemoteAudioClick)="onStartRemoteAudio(contact)"
+                                      (stopRemoteAudioClick)="onStopRemoteAudio()"
+                                      (startRemoteVideoClick)="onStartRemoteVideo(contact)"
+                                      (stopRemoteVideoClick)="onStopRemoteVideo()"
+                                      (addToFavouritesClick)="onAddToFavouritesClicked()"
+                                      (ban)="onBanClicked()">
+            </app-remote-buttons-block>
+        </div>
+    </div>
+
+    <app-remote-video #video
+                      *ngIf="videoEnabled || audioEnabled"
+                      [contact]="contact"
+                      [audioOnly]="audioEnabled && !videoEnabled"
+                      [eventReceiver]="this"
+                      [attr.fullscreen]="fullscreen"
+                      [fullscreen]="fullscreen"
+                      [attr.mobile]="isMobile"
+                      (subscribeRemoteAudioEvent)="onStartRemoteAudio(contact)"
+                      (unsubscribeRemoteAudioEvent)="onStopRemoteAudio()"
+                      (stopTextChat)="onStopTextChat()"
+                      (stopRemoteVideoClick)="onStopRemoteVideo()"
+                      (addToFavourites)="onAddToFavouritesClicked()"
+                      (ban)="onBanClicked()">
+    </app-remote-video>
+</div>

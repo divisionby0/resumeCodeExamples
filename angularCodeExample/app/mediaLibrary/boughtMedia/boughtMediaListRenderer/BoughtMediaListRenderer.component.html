@@ -1,0 +1,20 @@
+<div class="boughtMediaListRenderer" (click)="onClick()">
+    <div class="mediaId">
+        <div>Media ID</div>
+        <div><b>{{data.getId()}}</b></div>
+    </div>
+
+    <div class="avatarContainer">
+        <img [src]="ownerAvatar" (error)="onImageSourceUndefined($event)" alt="img" class="avatar">
+    </div>
+
+    <div class="purchaseDateTime" [innerHtml]="dateString"></div>
+    <div class="imageContainer">
+        <img class="mediaStillImage" [src]="data.getStillImageUrl()">
+    </div>
+
+    <div class="buttonContainer">
+        <a [href]="downloadUrl" target="_blank" [download]="fileName" class="downloadButton">DOWNLOAD</a>
+        <a [href]="downloadUrl" target="_blank" [download]="fileName"><img class="downloadIcon" src="assets/images/downloadIcon.png"></a>
+    </div>
+</div>

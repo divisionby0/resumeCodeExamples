@@ -1,0 +1,60 @@
+<div class="mobMenu" [ngClass]="expanded==true?'expanded':''">
+
+    <!--<christmas-lightrope *ngIf="expanded"></christmas-lightrope>-->
+
+    <div class="itemsWrapper">
+        <app-chat-controls-block [selected]="chatSelected"
+                                 (stopTextChat)="onStopTextChat()"
+                                 (ban)="onBanClicked()"
+                                 (onRemoteVideoStarted)="onRemoteVideoStarted()">
+        </app-chat-controls-block>
+
+        <div class="mobMenuItem" [ngClass]="selectedButtonName=='contacts'?'mobMenuItemSelected':''" (click)="onContactsSelected()">
+            <div class="mobMenuItemIcon mobMenuContactsIcon"></div>
+            <div class="mobMenuItemText">CONTACTS</div>
+        </div>
+
+        <div class="mobMenuItem" [ngClass]="selectedButtonName=='banned'?'mobMenuItemSelected':''" (click)="onBannedContactsSelected()">
+            <div class="mobMenuItemIcon mobMenuBaAnnedContactsIcon"></div>
+            <div class="mobMenuItemText">BANNED</div>
+        </div>
+
+        <div class="mobMenuItem" [ngClass]="selectedButtonName=='invitations'?'mobMenuItemSelected':''" (click)="onInvitationsSelected()">
+            <div class="mobMenuItemIcon mobMenuInvitationsIcon"></div>
+            <div class="mobMenuItemText">ALL INVITATIONS</div>
+
+            <div *ngIf="invitationsTotalVisible" class="mobInvitationsTotalHorizontalWrapper">
+                <div class="mobInvitationsTotalVerticalWrapper">
+                    <div class="redBadge">{{totalInvitations}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mobMenuItem" (click)="onFinanceSelected()">
+            <div class="mobMenuItemIcon mobMenuBalanceIcon"></div>
+            <div class="mobMenuItemText">BALANCE</div>
+
+            <div class="mobInvitationsTotalHorizontalWrapper">
+                <div class="mobInvitationsTotalVerticalWrapper">
+                    <app-balance-badge></app-balance-badge>
+                </div>
+
+                <div *ngIf="freeMinuteAvailable" class="mobMenuFreeMinuteIcon"></div>
+            </div>
+        </div>
+
+        <div class="mobMenuItem" (click)="onMediaSelected()">
+            <div class="mobMenuItemIcon mobMenuBoughtMediaIcon"></div>
+            <div class="mobMenuItemText">BOUGHT MEDIA</div>
+        </div>
+
+
+        <div class="mobMenuItem">
+            <a href="{{manualUrl}}" target="_blank" class="manualLink">
+                <img src="assets/images/mobMenu/manual.png" alt="icon" class="mobMenuItemIcon"/>
+                <div class="mobMenuItemText">MANUAL</div>
+            </a>
+        </div>
+
+    </div>
+</div>

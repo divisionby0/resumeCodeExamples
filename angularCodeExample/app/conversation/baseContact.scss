@@ -1,0 +1,87 @@
+@import "conversationCommon";
+@import "../avatarElement";
+@import "conversation/conversation.component";
+:host{
+  @extend .conversationPersonBlock;
+  z-index: 1;
+}
+
+.collapsedVerticallyAvatar{
+  @extend .smallAvatar;
+  margin-left: 20px;
+}
+
+.personInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding-top: 5px;
+}
+.personInfo[remoteVideoFullscreen="true"] {
+  margin-left: -30px;
+}
+
+.personInfo[mobile="true"] {
+  width: 40px;
+  padding-top: 20px;
+}
+
+.personName{
+  font-weight: bold;
+  font-size: 20px;
+  color: #053969;
+  line-height: 12px;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.personId {
+  font-weight: normal;
+  font-size: 16px;
+  color: #053969;
+  line-height: 18px;
+}
+
+
+.balanceWrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.balanceWrapperInSelfVideoPlayer{
+  @extend .balanceWrapper;
+  padding-bottom: 16px;
+}
+.amount{
+  line-height: 18px;
+  font-weight: bold;
+  font-size: 17px;
+  color: #053969;
+  padding-left: 4px;
+}
+
+.freeMinuteLabel{
+  font-size: 14px;
+  white-space: nowrap;
+  height: 14px;
+  color: $redColor;
+}
+
+.noPersonSelectedText{
+  @extend .personId;text-align: center;
+}
+
+@media screen and (max-width: 620px) {
+  .personName{
+    font-size: 24px;
+  }
+  .personId {
+    font-size: 18px;
+  }
+  :host{
+    width: 90%!important;
+  }
+}

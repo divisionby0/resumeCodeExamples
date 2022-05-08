@@ -1,0 +1,9 @@
+export class ContactEvent {
+    public static HAS_ACTIVE_TEXT_CHAT_CHANGED:string = "HAS_ACTIVE_TEXT_CHAT_CHANGED";
+    public static HAS_ACTIVE_AUDIO_CHAT_CHANGED:string = "HAS_ACTIVE_AUDIO_CHAT_CHANGED";
+    public static HAS_ACTIVE_VIDEO_CHAT_CHANGED:string = "HAS_ACTIVE_VIDEO_CHAT_CHANGED";
+    public static LADY_SELECTED_ANOTHER_CONTACT:string = "LADY_SELECTED_ANOTHER_CONTACT";
+    public static CONTACT_SELECTED:string = "CONTACT_SELECTED";
+    public static ONLINE_STATE_CHANGED:string = "ONLINE_STATE_CHANGED";
+    public static ENABLE_REMOVE_VIDEO_REQUEST:string = "ONLINE_STATE_CHANGED";
+}

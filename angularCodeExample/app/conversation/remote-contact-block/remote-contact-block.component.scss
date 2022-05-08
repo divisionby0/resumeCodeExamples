@@ -1,0 +1,7 @@
+@import "../baseContact";
+@import "../../common";
+:host[fullscreen="true"]{
+  @extend .screenFullsize;
+  z-index: 3;
+  position: absolute;
+}

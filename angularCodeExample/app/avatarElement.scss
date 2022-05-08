@@ -1,0 +1,140 @@
+@import "animation";
+@import "common";
+$avatarHeight:85px;
+$collapsedAvatarHeight:28px;
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: $avatarHeight;
+  width: $avatarHeight;
+  min-width: $avatarHeight;
+}
+.avatarCollapsed {
+  @extend .avatar;
+  height: $collapsedAvatarHeight!important;
+  width: $collapsedAvatarHeight!important;
+  min-width: $collapsedAvatarHeight!important;
+  min-height: $collapsedAvatarHeight!important;
+  max-width: $collapsedAvatarHeight!important;
+  max-height: $collapsedAvatarHeight!important;
+}
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+}
+.snowflakeAvatarFrame{
+  position: absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom: 0;
+  transform: translate(-16px, -16px);
+}
+.avatarAnimation {
+  position: absolute;
+}
+
+.avatarNoMoney {
+  position: absolute;
+  top: -5px;
+  right: 8px;
+}
+
+.avatarEllipsis {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+}
+.avatarEllipsis span {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #ffffff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.avatarEllipsis span:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.avatarEllipsis span:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.avatarEllipsis span:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.avatarEllipsis span:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+.smallAvatar {
+  height: 33px;
+  width: 33px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+  margin-right: 6px;
+  min-width: 33px;
+}
+
+.contactIsListeningAudio{
+  margin-left: -4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgb(0 0 0 / 50%);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(#{$assets}buttons/listening-white.png);
+}
+
+.contactIsWatchingVideo{
+  margin-left: -8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgb(0 0 0 / 50%);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(#{$assets}buttons/eye-white.png);
+}
+
+
+
+

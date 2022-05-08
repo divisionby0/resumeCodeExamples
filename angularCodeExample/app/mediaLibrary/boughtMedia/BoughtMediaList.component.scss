@@ -1,0 +1,14 @@
+.boughtMediaList{
+  width: 580px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@media screen and (max-width: 810px) {
+  .boughtMediaList{
+    width: 100%!important;
+  }
+}

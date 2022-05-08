@@ -1,0 +1,22 @@
+.animated{
+  transition: 0.3s;
+}
+
+.rotate {
+  animation: rotate 0.7s linear infinite;
+}
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.rotateCounterClockwise {
+  animation: rotateCounterClockwise 0.7s linear infinite;
+}
+@keyframes rotateCounterClockwise {
+  to {
+    transform: rotate(-360deg);
+  }
+}

@@ -1,0 +1,52 @@
+<div [ngClass]="cssClasses" (mouseenter)="onMouseOver()" (mouseleave)="onMouseOut()">
+
+    <div *ngIf="hasFreeMinute" class="freeMinuteIcon"></div>
+
+    <div class="contactListRendererAvatarBlock" (click)="onClicked()" (mouseenter)="onAvatarMouseOver()" (mouseleave)="onAvatarMouseOut()">
+
+        <div style="position: absolute; width: 100%; left: 0; top: 12px;">
+            <div style="height: 100%; display: flex; flex-direction: column; justify-content: space-around;">
+                <div *ngIf="remotePersonReceivingAudio" class="contactIsListeningAudio"></div>
+                <div *ngIf="remotePersonReceivingVideo" class="contactIsWatchingVideo"></div>
+            </div>
+        </div>
+
+        <img src="{{avatarUrl}}" (error)="onImageSourceUndefined($event)" alt="img" class="contactListRendererAvatar">
+
+
+        <img *ngIf="contactAnimationVisible == true" src="{{contactAnimationUrl}}" class="previewAnimation" [ngClass]="previewAnimationClass">
+
+
+        <div *ngIf="contact.getIsOnline()==true && !contactAnimationVisible" class="onlineIcon"></div>
+        <div *ngIf="contact.getIsOnline()!=true" class="offlineIcon"></div>
+
+        <span *ngIf="unreadMessageCounterVisible  && !contactAnimationVisible" class="unreadMessagesCounter">{{unreadMessageCounterValueString}}</span>
+
+        <img *ngIf="audioGreenIconVisible  && !contactAnimationVisible" src="assets/images/buttons/audio-green.png" alt="icon" class="contactListRendererAvatarMediaStateButton contactListRendererAvatarAudioState">
+        <img *ngIf="audioActiveIconVisible  && !contactAnimationVisible" src="assets/images/buttons/audio-red.png" alt="icon" class="contactListRendererAvatarMediaStateButton contactListRendererAvatarAudioState">
+        <img *ngIf="audioBusyIconVisible  && !contactAnimationVisible" src="assets/images/buttons/audio-gold.png" alt="icon" class="contactListRendererAvatarMediaStateButton contactListRendererAvatarAudioState">
+        <img *ngIf="videoIconVisible && !contactAnimationVisible" src="assets/images/buttons/video-green.png" alt="icon" class="contactListRendererAvatarMediaStateButton contactListRendererAvatarVideoState">
+    </div>
+
+    <div class="contactListRendererContactData" (click)="onClicked()">
+        <div class="contactListRendererContactDataRow">
+            <div class="contactListRendererContactDataIcon contactListUserIcon"></div>
+            <p class="contactListRendererContactDataUserName">{{contact.getName()}}</p>
+            <mood-component [contact]="contact"></mood-component>
+        </div>
+        <div class="contactListRendererContactDataRow">
+            <div class="contactListRendererContactDataIcon contactListUserIdIcon"></div>
+            <p class="contactListRendererContactDataText">{{contact.getId()}}</p>
+        </div>
+        <div class="contactListRendererContactDataRow">
+            <div class="contactListRendererContactDataIcon contactListUserLocationIcon"></div>
+            <p class="contactListRendererContactDataText">{{location}}</p>
+            <p class="contactListRendererContactDataAge">{{contact.age}} age</p>
+        </div>
+    </div>
+
+    <div *ngIf="controlsVisible" class="contactListRendererButtons">
+        <app-remove-contact-button (click)="remove()" [hidden]="true"></app-remove-contact-button>
+        <app-ban-button (click)="ban()"></app-ban-button>
+    </div>
+</div>

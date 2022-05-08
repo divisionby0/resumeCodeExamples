@@ -1,0 +1,10 @@
+<div class="mediaLibraryListMobContainer" *ngIf="!remoteVideoFullscreen">
+
+    <virtual-scroller #horizontalScroll
+                      [horizontal]="true"
+                      [items]="items"
+                      [enableUnequalChildrenSizes]="false"
+                      class="mediaLibraryListMob">
+        <media-library-list-renderer-mobile *ngFor="let item of horizontalScroll.viewPortItems" [data]="item" (buyMedia)="onBuyMedia($event)"></media-library-list-renderer-mobile>
+    </virtual-scroller>
+</div>

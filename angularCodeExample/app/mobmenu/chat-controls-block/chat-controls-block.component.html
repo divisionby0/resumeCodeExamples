@@ -1,0 +1,27 @@
+<div class="wrapper" [ngClass]="wrapperCssClasses">
+    <div class="upBlock"  (click)="onChatSelected()">
+        <div class="mobMenuItemIcon mobMenuConversationIcon"></div>
+
+        <div class="mobMenuItemText">{{chatButtonLabel}}</div>
+
+        <div *ngIf="currentRemoteContactAvatar" class="currentRemoteContactWrapper">
+
+            <div class="conversationArrow"></div>
+
+            <img src="{{currentRemoteContactAvatar}}" class="currentRemoteContactAvatar">
+        </div>
+    </div>
+
+    <app-remote-buttons-block *ngIf="hasRemoteContact"
+                              #mobMenuButtonsBlock
+                              [contact]="contact"
+                              (startRemoteAudioClick)="onStartRemoteAudio(contact)"
+                              (stopRemoteAudioClick)="onStopRemoteAudio()"
+                              (stopTextChat)="onStopTextChat()"
+                              (startRemoteVideoClick)="onStartRemoteVideo(contact)"
+                              (stopRemoteVideoClick)="onStopRemoteVideo()"
+                              (addToFavouritesClick)="onAddToFavouritesClicked()"
+                              (ban)="onBanClicked()"
+                              [eventReceiver]="this">
+    </app-remote-buttons-block>
+</div>

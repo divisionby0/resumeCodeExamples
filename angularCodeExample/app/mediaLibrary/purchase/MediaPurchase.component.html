@@ -1,0 +1,37 @@
+<div [ngClass]="containerCssClass" >
+    <div [ngClass]="topBarCssClass">
+        <div [ngClass]="ownerContainerCssClass">
+            <div style="width: 70px; height: 70px;">
+                <img [src]="ownerAvatar" (error)="onImageSourceUndefined($event)" alt="img" class="ownerAvatarImage">
+            </div>
+            <div [ngClass]="ownerNameCssClass">{{ownerName}}</div>
+        </div>
+
+        <div [ngClass]="idContainerCssClass">
+            <div class="topBarContentHeader">Video ID</div>
+            <div class="topBarContentData">{{mediaId}}</div>
+        </div>
+        <div [ngClass]="costContainerCssClass">
+            <div class="topBarContentHeader">Cost</div>
+            <div class="topBarContentData">{{cost}}</div>
+        </div>
+
+        <div [ngClass]="durationContainerCssClass">
+            <div class="topBarContentHeader">Duration</div>
+            <div class="topBarContentData">{{durationString}}</div>
+        </div>
+        <div [ngClass]="dateContainerCssClass">
+            <div class="topBarContentHeader">Created</div>
+            <div class="topBarContentData">{{dateTime}}</div>
+        </div>
+    </div>
+
+    <div class="mediaPurchaseContainer">
+        <div class="sidebar">
+            <div *ngIf="!isMobile" class="legend">Video preview</div>
+            <div class="previewImage">
+                <img class="image" [src]="previewUrl">
+            </div>
+        </div>
+    </div>
+</div>

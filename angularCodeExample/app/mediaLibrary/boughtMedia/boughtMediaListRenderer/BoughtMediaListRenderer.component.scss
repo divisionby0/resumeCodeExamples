@@ -1,0 +1,126 @@
+@import "../../../common";
+.boughtMediaListRenderer{
+  width: 98%;
+  height: 90px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  margin: 2px;
+  padding-left: 4px;
+  border: 1px solid lightgrey;
+}
+.mediaId{
+  width: 15%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.purchaseDateTime{
+  width: 25%;
+  padding-left: 10px;
+  color: grey;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.imageContainer{
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+.mediaStillImage{
+  height: 88px;
+  padding: 4px 0;
+  margin: 0 10px;
+}
+
+.buttonContainer{
+  width: 25%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.downloadButton{
+  background-color: $midBlueColor;
+  color: white;
+  padding: 4px 8px;
+  font-weight: bold;
+}
+
+.downloadButton:link {
+  text-decoration: none;
+}
+
+.downloadButton:visited {
+  text-decoration: none;
+}
+
+.downloadButton:hover {
+  text-decoration: underline;
+}
+
+.downloadButton:active {
+  text-decoration: underline;
+}
+
+.avatarContainer {
+  left:4px;
+  top: 4px;
+
+  width: 60px!important;
+  height: 60px!important;
+  min-width: 60px!important;
+}
+
+.avatar{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+}
+
+.downloadIcon{
+  display: none;
+}
+
+@media screen and (max-width: 810px) {
+  .mediaId{
+    display: none;
+  }
+
+  .imageContainer{
+    width: 50%;
+  }
+
+  .avatarContainer {
+    left:4px;
+    top: 4px;
+
+    width: 30px!important;
+    height: 30px!important;
+    min-width: 30px!important;
+  }
+
+  .buttonContainer{
+    width: 40px!important;
+  }
+
+  .downloadButton {
+    display: none;
+  }
+
+  .downloadIcon{
+    display: block;
+    width: 40px;
+  }
+}

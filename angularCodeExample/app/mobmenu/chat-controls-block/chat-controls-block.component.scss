@@ -1,0 +1,31 @@
+@import "../mobile-menu/mobile-menu.component";
+
+.conversationArrow{
+
+}
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: $mobMenuItemHeight;
+}
+.expanded{
+  height: calc(#{$mobMenuItemHeight}*2)!important;
+}
+.upBlock{
+  width: 100%;
+  height: $mobMenuItemHeight;
+  display: flex;
+  flex-direction: row;
+}
+.controls{
+  width: 100%;
+  height: $mobMenuItemHeight;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.selected{
+  background-color: $extraLightblue!important;
+}

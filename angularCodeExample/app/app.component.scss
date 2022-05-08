@@ -1,0 +1,108 @@
+@import "common";
+$mobMenuItemHeight:60px;
+$mobMenuItemIconHeight:50px;
+
+/*
+SIZES:
+   1380px
+   1279px
+   810px
+   640px
+   520px
+   440px
+   380px
+*/
+
+.appWrapper{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+
+}
+
+.siteBackgroundImage{
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+.contentWrapper{
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 1380px;
+  flex-direction: column;
+  margin: 0 auto;
+  background-color: white;
+}
+.contentWrapper[remoteVideoFullscreen="true"]{
+  @extend .screenFullsize;
+  position: absolute!important;
+}
+
+.appContent[remoteVideoFullscreen="true"]{
+  @extend .screenFullsize;
+  position: absolute!important;
+}
+
+.appContent{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  min-width: $minAppWidth;
+  max-width: $maxAppWidth;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
+}
+.appContentRowLeft{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  width: 1010px;// TODO what's this ?
+  height: 100%;
+}
+.appContentRowRight{
+  display: flex;
+  flex-direction: column;
+  /*width: 40%;*/
+  height: 100%;
+}
+
+.heightUnset{
+  height:unset!important;
+}
+
+@media screen and (max-width: 1380px) {
+  .appContent{
+    margin-bottom: $footerHeight;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .appContentRowLeft{
+    width: 100%;
+  }
+  .appContentRowRight{
+    width: 100%;
+  }
+  .contentWrapper{
+    box-shadow: 1px 2px 7px rgba(0, 0, 0, .22);
+  }
+}
+
+@media screen and (min-width: 1380px) {
+  .appContent{
+    /*margin-top: $headerHeight;*/
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 1380px) {
+  .siteBackgroundImage{
+    opacity: 0.1;
+    height: 100%;
+  }
+}

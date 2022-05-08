@@ -1,0 +1,38 @@
+@import "../../common";
+.conversationTypeTextChatIcon{
+  height: 46px;
+  padding-top: 4px;
+}
+
+.personHasText{
+  background-image: url("...");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.personHasAudio{
+  background-image: url("...");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.buttonsWrapper{
+  height: 53px;
+  width: 186px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+
+@media screen and (max-width: 480px) {
+  .conversationTypeTextChatIcon{
+    display: none;
+  }
+  .buttonsWrapper{
+    background-image: unset;
+  }
+}

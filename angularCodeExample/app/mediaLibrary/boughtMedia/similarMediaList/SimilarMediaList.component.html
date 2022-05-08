@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="header">Similar media</div>
+
+    <virtual-scroller #horizontalScroll
+                      [horizontal]="true"
+                      [items]="items"
+                      [enableUnequalChildrenSizes]="false"
+                      class="list">
+        <similar-media-list-renderer *ngFor="let item of horizontalScroll.viewPortItems" [data]="item"></similar-media-list-renderer>
+    </virtual-scroller>
+</div>
